@@ -168,9 +168,45 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
         - Projeção por tipos anônimos:
             - var resultado = from reg in ctx.Editoras where reg.Nome.Contains("Brasil") select new { reg.EditoraId, reg.Nome };
     - Muito cuidado com o tipo da coleção em consultas com LINQ. Em retornos convertidos para IEnumerable o compilador usa delegates e neste caso os filtros são feitos no lado do cliente. Em retornos convertidos para IQueryable o compilador usa expressions e neste caso os filtros são feitos no lado do servidor. O simples fato de indicar o tipo do retorno pode resultar em perda de performance, principalmente quando estamos lhe dando com um grande volume de dados (em pequenos volumes não sentimos grande diferença).
+    - Uma boa prática ao efetuar consultas é utilizar **AsNoTracking()** antes de **ToList()**. 
+    ```csharp
+    using (var db = new MyAppDbContext())
+    {
+        var livros = db.Livros.AsNoTracking().ToList(); 
+        //...
+    }
+    ```
+    - Muito cuidado com o posicionamento de **ToList()**. Seu posicionamento deve ser sempre no final.
+    ```csharp
+    //errado
+    db.Livros.ToList().Where(x => x.Titulo.Contains("DDD")).ToList();
+
+    //correto
+    db.Livros.Where(x => x.Titulo.Contains("DDD")).ToList();
+    ```
+    - Quando a necessidade é apenas o retorno de uma ou algumas colunas específicas uma boa prática é filtrar as colunas antes de ToList().
+    ```csharp
+    //aqui estou interessado apenas nos títulos dos livros de Marco
+    db.Livros.Include(x => x.Autor)
+             .Where(x => x.Autor.Nome.Contains("Marco"))
+             .Select(x => x.Titulo)
+             .ToList(); 
+
+    //aqui estou interessado apenas nos títulos e nos anos de publicação dos livros de Marco
+    db.Livros.Include(x => x.Autor)
+             .Where(x => x.Autor.Nome.Contains("Marco"))
+             .Select(x => new {
+                 x.Titulo, 
+                 x.AnoPublicacao
+             })
+             .ToList(); 
+    ```
+    - Outra boa prática é realizar consultas em lote, ou seja, várias consultas aproveitando-se da mesma conexão.
+    - Avalie a possibilidade de usar uma solução híbrida de acesso a dados, ou seja, usar o EF para escrita/gravação e, por exemplo, o Dapper para leitura/consulta.
 
 - Importante: 
-    - As propriedades de navegação devem ser marcadas como **virtual** para que o EF realize o **lazzy loading**.
+    - As propriedades de navegação devem ser marcadas como **virtual** para que o EF realize o **lazy loading**.
+    - Quando o **lazy loading** está ativado não precisa fazer **include** de propriedades virtuais de navegação, pois o carregamento ocorre automaticamente assim que as propriedades são acessadas.
 
 - Evolução: 
     - EF 4
