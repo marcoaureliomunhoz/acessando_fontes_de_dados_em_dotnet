@@ -251,7 +251,7 @@ Evolução
     - Database Scalar Function Mapping 
     - HasQueryFilter: filtro padrão, ou seja, filtro que sempre deve ocorrer ao consultar uma determinada tabela.
     - EF.Functions.Like()
-    - DbContext pooling: services.AddDbContextPool<MyAppContext>(...)
+    - DbContext pooling: services.AddDbContextPool\<MyAppContext>(...)
     - Explicity Compiled Queries 
     - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4)
 
@@ -267,6 +267,7 @@ Evolução
 - https://github.com/aspnet/EntityFrameworkCore 
 - https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap
 - https://docs.microsoft.com/en-us/ef/core/
+- https://docs.microsoft.com/en-us/ef/
 - https://www.youtube.com/watch?v=d3FvOAPVPCo  
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
