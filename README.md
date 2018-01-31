@@ -261,9 +261,11 @@ Evolução
 
 - https://github.com/aspnet/EntityFramework6
 - https://github.com/aspnet/EntityFramework6/wiki
-- https://github.com/aspnet/EntityFramework6/wiki/Roadmap
+- https://github.com/aspnet/EntityFramework6/wiki/Roadmap 
 - https://msdn.microsoft.com/en-us/library/gg696172(v=vs.103).aspx 
 - https://msdn.microsoft.com/en-us/library/aa937723(v=vs.113).aspx 
+- https://github.com/aspnet/EntityFrameworkCore 
+- https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap
 - https://www.youtube.com/watch?v=d3FvOAPVPCo  
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
