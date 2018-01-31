@@ -231,7 +231,29 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
     - EF 6.1.1
     - EF 6.1.2
     - **EF 6.2 - Released 10/2017**
+        - EF.Functions.Like()
     - EF 6.3
+
+**Entity Framework Core**  
+
+Evolução
+- EF Core 1.0/1.1 
+    - Backing Fields
+    - Batching: transações em lote. 
+    - Provider In-Memory 
+    - Shadow Properties 
+    - Alternate Keys 
+    - Raw SQL Queries (SqlFrom): sql puro + linq. 
+- EF Core 2.0 
+    - Table Splitting
+    - EntityTypeConfiguration
+    - Owned Types  
+    - Database Scalar Function Mapping 
+    - HasQueryFilter: filtro padrão, ou seja, filtro que sempre deve ocorrer ao consultar uma determinada tabela.
+    - EF.Functions.Like()
+    - DbContext pooling: services.AddDbContextPool<MyAppContext>(...)
+    - Explicity Compiled Queries 
+    - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4)
 
 --- 
 
@@ -242,4 +264,7 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
 - https://github.com/aspnet/EntityFramework6/wiki/Roadmap
 - https://msdn.microsoft.com/en-us/library/gg696172(v=vs.103).aspx 
 - https://msdn.microsoft.com/en-us/library/aa937723(v=vs.113).aspx 
-- https://www.youtube.com/watch?v=d3FvOAPVPCo 
+- https://www.youtube.com/watch?v=d3FvOAPVPCo  
+- https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
+- https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
+- https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper)
