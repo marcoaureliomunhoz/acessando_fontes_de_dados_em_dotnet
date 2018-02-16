@@ -105,7 +105,7 @@ public class MeuContextoDb : DbContext
         //aqui estamos desativando a migração automática para evitar 
         //a modificação da base de dados
         //na inicialização do contexto
-        Database.SetInitializer<ContextoGeral>(null);
+        Database.SetInitializer<MeuContextoDb>(null);
 
         //aqui estamos desabilitando o modo lazy loading (carregamento tardio)
         Configuration.LazyLoadingEnabled = false;
