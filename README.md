@@ -173,7 +173,7 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
         - Projeção por tipos anônimos:
             - var resultado = from reg in ctx.Editoras where reg.Nome.Contains("Brasil") select new { reg.EditoraId, reg.Nome };
     - Muito cuidado com o tipo da coleção em consultas com LINQ. Em retornos convertidos para IEnumerable o compilador usa delegates e neste caso os filtros são feitos no lado do cliente. Em retornos convertidos para IQueryable o compilador usa expressions e neste caso os filtros são feitos no lado do servidor. O simples fato de indicar o tipo do retorno pode resultar em perda de performance, principalmente quando estamos lhe dando com um grande volume de dados (em pequenos volumes não sentimos grande diferença).
-    - Uma boa prática ao efetuar consultas é utilizar **AsNoTracking()** antes de **ToList()**. 
+    - Uma boa prática, quando o recurso de tracking está ativado (ProxyCreationEnabled = true), é efetuar consultas e utilizar **AsNoTracking()** antes de **ToList()**. 
     ```csharp
     using (var db = new MyAppDbContext())
     {
