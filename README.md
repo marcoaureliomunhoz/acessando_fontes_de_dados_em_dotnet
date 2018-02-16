@@ -100,6 +100,13 @@ public class MeuContextoDb : DbContext
         //aqui podemos indicar para quem o EF vai passar os registros de Log
         Database.Log = Console.Write; 
 
+        //o EF é Code First por padrão
+        //e vem com migração automática ativada
+        //aqui estamos desativando a migração automática para evitar 
+        //a modificação da base de dados
+        //na inicialização do contexto
+        Database.SetInitializer<ContextoGeral>(null);
+
         //aqui estamos desabilitando o modo lazy loading (carregamento tardio)
         Configuration.LazyLoadingEnabled = false;
 
@@ -271,3 +278,4 @@ Evolução
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
 - https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper)
 - https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
+- https://www.youtube.com/watch?v=J7rxPec4hls (Fluent Mapping no EF)
