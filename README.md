@@ -114,10 +114,9 @@ public class MeuContextoDb : DbContext
 ```csharp
 protected override void ModelCreating(DbModelBuilder modelBuilder)
 {
-    modelBuilder.Conventions
-        .Remove<PluralizingTableNameConvention>();
-        .Remove<OneToManyCascadeDeleteConvention>();
-        .Remove<ManyToManyCascadeDeleteConvention>();
+    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+    modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 }
 ```
 
@@ -126,10 +125,9 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
 ```csharp
 protected override void ModelCreating(DbModelBuilder modelBuilder)
 {
-    modelBuilder.Properties<string>()
-        .Configure(p => p.HasColumnType("varchar"))
-        .Configure(p => p.HasMaxLength(1000))
-        .Configure(p => p.IsUnicode(false));
+    modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
+    modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(100));
+    modelBuilder.Properties<string>().Configure(p => p.IsUnicode(false));
 }
 ```
 
@@ -256,7 +254,7 @@ Evolução
     - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4)
 
 --- 
-
+ 
 **Fontes** 
 
 - https://github.com/aspnet/EntityFramework6
@@ -272,3 +270,4 @@ Evolução
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
 - https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper)
+- https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
