@@ -260,6 +260,10 @@ Evolução
     - Explicity Compiled Queries 
     - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4)
 
+> - Uma das deficiências do EF Core está no relacionamento **N para N**. O recurso está disponível, mas apresenta problemas. Para usar é necessário definir uma classe associativa e fazer o devido mapeamento.
+> - Outra deficiência é o **lazy loading**. O recurso ainda não está disponível. Para carregar propriedades virtuais é necessário usar **Include** e **ThenInclude** para carregamento adiantado (eagler) ou usar **context.Entry(blog).Collection(b => b.Posts).Load()** para carregamento explícito. 
+> - https://docs.microsoft.com/pt-br/ef/core/querying/related-data
+
 --- 
  
 **Fontes** 
