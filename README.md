@@ -293,6 +293,7 @@ Evolução
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
 - https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper) 
 - https://github.com/andreluizsecco/AspnetCore.EFCore_Dapper 
-- https://www.youtube.com/watch?v=MTjUr1SAkbk (Dapper)
+- https://www.youtube.com/watch?v=MTjUr1SAkbk (Dapper) 
+- https://github.com/renatogroffe/Dapper-DotNetCore2/tree/master/Dapper_DotNetCore2 
 - https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
 - https://www.youtube.com/watch?v=J7rxPec4hls (Fluent Mapping no EF)
