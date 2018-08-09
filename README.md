@@ -70,6 +70,9 @@ class Program
 }
 ```
 
+**Micro Frameworks de Acesso a Dados ou Micro ORMs**  
+Uma outra forma de acessar dados é através de micro-orms, que são bibliotecas de extensão do ADO.NET que facilitam o acesso direto aos dados e ainda propiciam uma performance de acesso melhor que os ORMs.
+
 **Entity Framework (EF)**  
 Framework ORM nativo da plataforma .NET criado pela própria Microsoft. 
 
@@ -258,11 +261,18 @@ Evolução
     - EF.Functions.Like()
     - DbContext pooling: services.AddDbContextPool\<MyAppContext>(...)
     - Explicity Compiled Queries 
-    - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4)
+    - String Interpolation in Raw Sql (https://www.infoq.com/br/news/2017/10/EF-Core-2.0-4). 
+- EF Core 2.1 
+    - Table Splitting
+    - Lazy loading: com UseLazyLoadingProxies você indica que todas as propriedades **virtual** devem ser carregadas tardiamente. Ainda estão estudando uma forma melhor para lidar com carregamento tardio sem definir para toda a aplicação. Com o lazy loading você não precisa usar **Include()**, pois o próprio entity se encarrega de carregar as dependências ao usar.
+    - GroupBy no banco. Até a versão 2.0 o group by era feito em memória **(isso é extremamente importante)**. 
+    - Mapeamento de views com QueryType. 
+    - Transação. 
+    - Ainda não tem suporte para relações N para N.
 
 > - Uma das deficiências do EF Core está no relacionamento **N para N**. O recurso está disponível, mas apresenta problemas. Para usar é necessário definir uma classe associativa e fazer o devido mapeamento.
-> - Outra deficiência é o **lazy loading**. O recurso ainda não está disponível. Para carregar propriedades virtuais é necessário usar **Include** e **ThenInclude** para carregamento adiantado (eagler) ou usar **context.Entry(blog).Collection(b => b.Posts).Load()** para carregamento explícito. 
-> - https://docs.microsoft.com/pt-br/ef/core/querying/related-data
+> - Outra deficiência é o **lazy loading**. O recurso, até a versão 2.0, não estava disponível. Para carregar propriedades virtuais é necessário usar **Include** e **ThenInclude** para carregamento adiantado (eagler) ou usar **context.Entry(blog).Collection(b => b.Posts).Load()** para carregamento explícito. A partir da versão 2.1 até existe a opção de carregamento tardio, mas ainda não é a melhor das soluções. Estão estudando formas de melhorar. 
+> - https://docs.microsoft.com/pt-br/ef/core/querying/related-data 
 
 --- 
  
@@ -277,9 +287,12 @@ Evolução
 - https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap
 - https://docs.microsoft.com/en-us/ef/core/
 - https://docs.microsoft.com/en-us/ef/
+- https://github.com/StackExchange/Dapper
 - https://www.youtube.com/watch?v=d3FvOAPVPCo  
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
 - https://www.youtube.com/watch?v=rFSwbT2I7Pw (EF Core 2.0) 
-- https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper)
+- https://www.youtube.com/watch?v=y2NP38lUZHw (EF Core + Dapper) 
+- https://github.com/andreluizsecco/AspnetCore.EFCore_Dapper 
+- https://www.youtube.com/watch?v=MTjUr1SAkbk (Dapper)
 - https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
 - https://www.youtube.com/watch?v=J7rxPec4hls (Fluent Mapping no EF)
