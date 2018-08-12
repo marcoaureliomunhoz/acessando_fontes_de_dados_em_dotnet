@@ -1,0 +1,60 @@
+﻿@model WebApplication1.Models.LivroCadVM
+
+@{
+    ViewData["Title"] = "Cadastro de Livro";
+}
+
+<a asp-controller="Livros" asp-action="Index">Voltar</a>
+<hr />
+
+<h2>Cadastro de Livro</h2>
+
+@if (Model.Problemas != null)
+{
+    <ul>
+        <strong>Atenção:</strong>
+        @foreach (string problema in Model.Problemas)
+        {
+            <li>@problema</li>
+        }
+    </ul>
+}
+
+<form method="post">
+    <label>ID:</label> <input asp-for="LivroId" style="width:50px" readonly="readonly" /> <br />
+    <label>Título:</label> <input asp-for="Titulo" style="width:300px" /> <br />
+    <hr />
+    <button type="submit">Salvar</button>
+</form>
+
+@if (Model.LivroId > 0)
+{
+    <h3>Autores</h3>
+    <div>
+        <a asp-controller="Livros" asp-action="CadAutor" asp-route-livroid="@Model.LivroId">Novo</a>
+    </div>
+    @if (Model.Autores != null && Model.Autores.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var autor in Model.Autores)
+                {
+                    <tr>
+                        <td>@autor.AutorId</td>
+                        <td>@autor.Nome</td>
+                        <td>
+                            <a asp-controller="Livros" asp-action="DelAutor" asp-route-livroid="@Model.LivroId" asp-route-autorid="@autor.AutorId">Remover</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
