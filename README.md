@@ -297,3 +297,4 @@ Evolução
 - https://github.com/renatogroffe/Dapper-DotNetCore2/tree/master/Dapper_DotNetCore2 
 - https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
 - https://www.youtube.com/watch?v=J7rxPec4hls (Fluent Mapping no EF)
+- https://www.learnentityframeworkcore.com

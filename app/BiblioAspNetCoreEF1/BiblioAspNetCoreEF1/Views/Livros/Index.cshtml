@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BiblioAspNetCoreEF1.Models.Livro>
+
+@{
+    ViewData["Title"] = "Livros";
+}
+
+<a asp-controller="Home" asp-action="Index">Voltar</a>
+<hr />
+
+<h2>Livros</h2>
+
+<hr />
+<a asp-controller="Livros" asp-action="Cadastro" asp-route-id="0">Novo</a>
+<hr />
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Editora</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estado in Model)
+        {
+        <tr>
+            <td>@estado.LivroId</td>
+            <td>@estado.Titulo</td>
+            <td>@estado.Editora.Nome</td>
+            <td>
+                <a asp-controller="Livros" asp-action="Cadastro" asp-route-id="@estado.LivroId">Alterar</a>
+                <a asp-controller="Livros" asp-action="Excluir" asp-route-id="@estado.LivroId">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

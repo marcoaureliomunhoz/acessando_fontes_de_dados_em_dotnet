@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AgendaAspNetCoreDapper1.Models.Estado>
+
+@{
+    ViewData["Title"] = "Estados";
+}
+
+<a asp-controller="Home" asp-action="Index">Voltar</a>
+<hr />
+
+<h2>Estados</h2>
+
+<hr />
+<a asp-controller="Estados" asp-action="Cadastro" asp-route-id="_">Novo</a>
+<hr />
+
+<table>
+    <thead>
+        <tr>
+            <th>UF</th>
+            <th>Nome</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estado in Model)
+        {
+        <tr>
+            <td>@estado.UF</td>
+            <td>@estado.Nome</td>
+            <td>
+                <a asp-controller="Estados" asp-action="Cadastro" asp-route-id="@estado.UF">Alterar</a>
+                <a asp-controller="Estados" asp-action="Excluir" asp-route-id="@estado.UF">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
