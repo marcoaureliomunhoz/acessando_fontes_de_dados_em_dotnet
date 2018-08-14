@@ -56,6 +56,7 @@ namespace WebApp.Controllers
         }
         public IActionResult Cadastro(int id)
         {
+            //Console.WriteLine(HttpContext.Request.Path);
             var model = GetCadastro(id);
             return View(model);
         }
