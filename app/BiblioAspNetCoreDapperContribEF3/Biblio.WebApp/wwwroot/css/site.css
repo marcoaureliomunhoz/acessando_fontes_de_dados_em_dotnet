@@ -1,0 +1,18 @@
+﻿body {
+    padding: 20px;
+}
+
+label {
+    display: inline-block;
+    min-width: 70px;
+}
+
+form {
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+th, td {
+    padding-top: 5px;
+    padding-right: 5px;
+}

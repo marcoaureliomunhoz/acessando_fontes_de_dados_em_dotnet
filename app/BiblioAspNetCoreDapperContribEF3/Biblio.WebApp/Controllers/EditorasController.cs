@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Biblio.DomainApp.Entidades;
+using Biblio.DomainApp.Repositorios;
+using Biblio.WebApp.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Biblio.WebApp.Controllers
+{
+    public class EditorasController : Controller
+    {
+        IEditorasRep editorasRep;
+
+        public EditorasController(IEditorasRep editorasRep)
+        {
+            this.editorasRep = editorasRep;
+        }
+
+        public IActionResult Index()
+        {
+            return View(editorasRep.Listar());
+        }
+
+        public IActionResult Cadastro(int id)
+        {
+            var model = new EditoraCadVM();
+            var editora = editorasRep.Localizar(id, true);
+            if (editora != null)
+            {
+                model.EditoraId = editora.EditoraId;
+                model.Nome = editora.Nome;
+                model.Livros = editora.Livros;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Cadastro(EditoraCadVM model)
+        {
+            Editora editora = null;
+            if (model.EditoraId > 0)
+            {
+                editora = editorasRep.Localizar(model.EditoraId, false);
+                if (editora != null)
+                    editora.Alterar(model.Nome);
+            }
+            else
+            {
+                editora = new Editora(model.Nome);
+            }
+
+            //aqui validação e retorno se não passar
+
+            if (editora != null && editorasRep.Salvar(editora) > 0)
+                return RedirectToAction(nameof(Index));
+
+            //aqui cabe uma melhoria, um método específico para listar os livros de uma editora, 
+            //sem ter que localizar a editora para obter sua lista de livros
+            if (model.EditoraId > 0)
+                model.Livros = editorasRep.Localizar(model.EditoraId, true).Livros;                 
+
+            return View(model);
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            editorasRep.Excluir(id);
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}
