@@ -162,6 +162,13 @@ protected override void ModelCreating(DbModelBuilder modelBuilder)
 }
 ```
 
+- Transação com EF:
+
+Por padrão, se o provedor de banco de dados oferecer suporte a transações, todas as alterações em uma única chamada para *SaveChanges()* serão aplicadas em uma transação. Se qualquer uma das alterações falhar, a transação é revertida e nenhuma das alterações será aplicada ao banco de dados. Isso significa que é garantido que o *SaveChanges()* terá êxito ou sairá do banco de dados sem modificação caso ocorra algum erro. Para a maioria dos aplicativos, esse comportamento padrão é suficiente. Você só deve controlar as transações manualmente se os requisitos do aplicativo considerarem necessário. 
+
+Fonte: https://docs.microsoft.com/pt-br/ef/core/saving/transactions 
+
+
 - Cuidados e Boas Práticas com EF:
     - Devemos tomar muito cuidado ao anexar um objeto de um contexto A em outro contexto B.
     - Devemos tomar muito cuidado ao anexar um objeto livre de contexto em um dado contexto. O ideal é localizar e alterar o objeto preso/rastreado pelo contexto.
@@ -285,8 +292,8 @@ Evolução
 - https://msdn.microsoft.com/en-us/library/aa937723(v=vs.113).aspx 
 - https://github.com/aspnet/EntityFrameworkCore 
 - https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap
-- https://docs.microsoft.com/en-us/ef/core/
-- https://docs.microsoft.com/en-us/ef/
+- https://docs.microsoft.com/en-us/ef/ (tudo sobre o EF direto da microsoft)
+- https://docs.microsoft.com/en-us/ef/core/ (tudo sobre o EF Core direto da microsoft)
 - https://github.com/StackExchange/Dapper
 - https://www.youtube.com/watch?v=d3FvOAPVPCo  
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
