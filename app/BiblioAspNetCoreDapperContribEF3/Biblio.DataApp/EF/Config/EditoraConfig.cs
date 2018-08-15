@@ -14,6 +14,9 @@ namespace Biblio.DataApp.EF.Config
             builder.ToTable("Editora");
 
             builder.HasKey(x => x.EditoraId);
+
+            //ignore
+            builder.Ignore(x => x.Problemas);
         }
     }
 }

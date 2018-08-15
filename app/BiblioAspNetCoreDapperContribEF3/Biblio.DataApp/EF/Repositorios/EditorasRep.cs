@@ -19,6 +19,9 @@ namespace Biblio.DataApp.EF.Repositorios
 
         public Editora Localizar(int id, bool incluirLivros)
         {
+            if (db == null)
+                return null;
+
             if (incluirLivros)
                 return db.Editoras.Include(x => x.Livros).FirstOrDefault(x => x.EditoraId == id);
             return db.Editoras.FirstOrDefault(x => x.EditoraId == id);
@@ -26,6 +29,9 @@ namespace Biblio.DataApp.EF.Repositorios
 
         public int Excluir(int id)
         {
+            if (db == null)
+                return 0;
+
             var cadastro = Localizar(id, false);
             if (cadastro != null)
             {
@@ -37,11 +43,17 @@ namespace Biblio.DataApp.EF.Repositorios
 
         public List<Editora> Listar()
         {
+            if (db == null)
+                return new List<Editora>();
+
             return db.Editoras.ToList();
         }
 
         public int Salvar(Editora editora)
         {
+            if (db == null)
+                return 0;
+
             if (editora.EditoraId == 0)
                 db.Editoras.Add(editora);
             return db.SaveChanges();

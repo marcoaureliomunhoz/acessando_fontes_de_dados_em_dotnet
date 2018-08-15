@@ -17,6 +17,8 @@ namespace Biblio.DataApp.EF.Config
 
             builder.HasOne(x => x.Editora).WithMany(x => x.Livros);
 
+            //ignore
+            //builder.Ignore(x => x.Problemas);
             builder.Ignore(x => x.Autores);
         }
     }

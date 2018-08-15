@@ -1,13 +1,13 @@
-﻿using DomainApp.Entidades;
-using DomainApp.Repositorios;
+﻿using Biblio.DomainApp.Entidades;
+using Biblio.DomainApp.Repositorios;
+using Biblio.WebApp.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebApp.Controllers;
 
-namespace WebApp.Teste.Controllers
+namespace Biblio.WebApp.Teste.Controllers
 {
     [TestClass]
     public class EditorasControllerTeste
@@ -20,7 +20,7 @@ namespace WebApp.Teste.Controllers
         }
 
         [TestMethod]
-        public void Controller_Editoras_Action_Index__SE__RepositorioNaoPossuiItens__ENTAO__RetornarNullOuListaEmBranco()
+        public void EditorasController__GetIndex__SE__RepositorioVazio__ENTAO__RetornoDeveSerNullOuVazio()
         {
             //1 - Preparação
             List<Editora> editoras = null;
@@ -35,12 +35,12 @@ namespace WebApp.Teste.Controllers
         }
 
         [TestMethod]
-        public void Controller_Editoras_Action_Index__SE__RepositorioPossuiUmUnicoItem__ENTAO__RetornarEsteUnicoItemExistente()
+        public void EditorasContoller__GetIndex__SE__RepositorioPosuiUmUnicoItem__ENTAO__RetornoDeveSerEsteUnicoItem()
         {
             //1 - Preparação
-            List<Editora> editoras = new List<Editora>()
+            var editoras = new List<Editora>()
             {
-                new Editora(1,"novatec",null)
+                new Editora("novatec")
             };
             editorasRep.Setup(x => x.Listar()).Returns(editoras);
 
@@ -49,7 +49,7 @@ namespace WebApp.Teste.Controllers
             var retorno = editorasCtrl.GetIndex();
 
             //3 - Verificação
-            Assert.IsTrue(retorno != null && retorno.Count == 1 && retorno[0].Nome == "novatec");
+            Assert.IsTrue(retorno != null && retorno.Count == 1 && retorno[0].Nome == editoras[0].Nome);
         }
     }
 }

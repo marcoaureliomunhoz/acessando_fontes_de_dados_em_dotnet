@@ -14,6 +14,9 @@ namespace Biblio.DataApp.EF.Config
             builder.ToTable("Autor");
 
             builder.HasKey(x => x.AutorId);
+
+            //ignore
+            //builder.Ignore(x => x.Problemas);
         }
     }
 }
