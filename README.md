@@ -294,6 +294,7 @@ Evolução
 - https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap
 - https://docs.microsoft.com/en-us/ef/ (tudo sobre o EF direto da microsoft)
 - https://docs.microsoft.com/en-us/ef/core/ (tudo sobre o EF Core direto da microsoft)
+- https://docs.microsoft.com/pt-br/ef/core/modeling/relationships (relacionamentos)
 - https://github.com/StackExchange/Dapper
 - https://www.youtube.com/watch?v=d3FvOAPVPCo  
 - https://www.youtube.com/watch?v=W2WUrvSYJhE (EF - Boas Práticas)
@@ -304,4 +305,6 @@ Evolução
 - https://github.com/renatogroffe/Dapper-DotNetCore2/tree/master/Dapper_DotNetCore2 
 - https://www.youtube.com/watch?v=rqKWMynFLNA (Relacionamentos no EF)
 - https://www.youtube.com/watch?v=J7rxPec4hls (Fluent Mapping no EF)
-- https://www.learnentityframeworkcore.com
+- https://www.learnentityframeworkcore.com  
+- http://www.entityframeworktutorial.net/code-first/configure-many-to-many-relationship-in-code-first.aspx   
+- http://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx  
