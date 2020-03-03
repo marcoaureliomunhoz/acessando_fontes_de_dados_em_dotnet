@@ -276,6 +276,23 @@ Evolução
     - Mapeamento de views com QueryType. 
     - Transação. 
     - Ainda não tem suporte para relações N para N.
+- EF Core 2.2
+    - Suporte a dados espaciais.
+    - OwnsMany.
+    - TagWith.
+- EF Core 3.0
+    - Novo provedor LINQ com geração de consultas mais eficazes.
+    - Por padrão o EF3 pode lançar exceção em runtime para expressões que não podem ser avaliadas e convertidas. Para que o EF faça isso você precisa "forçar/explicitar" com AsEnumerable() ou ToList() ou semelhante.
+    - Com a restrição de avaliação de expressões e com melhoramentos no provedor LINQ a tendencia é que a instrução SQL gerada seja mais limpa e somente uma instrução seja executada.
+    - Suporte a Cosmos DB.
+    - Suporte a C# 8.0.
+    - Fluxos assíncronos.
+    - Agora para definir uma propriedade como nullable será necessário usar o símbolo **?**. Até então uma string sem esse marcador era considerada por padrão como nullable. Agora você precisa explicitar se deseja ou não que tipos como string sejam nullables de fato.
+    - Interceptação de operações de banco de dados.
+- EF Core 5.0 (próxima versão)
+    - *Propriedades de navegação muitos para muitos*.
+    - Mapeamento de herança de tabela por tipo.
+    - Melhoramentos gerais.
 
 > - Uma das deficiências do EF Core está no relacionamento **N para N**. O recurso está disponível, mas apresenta problemas. Para usar é necessário definir uma classe associativa e fazer o devido mapeamento.
 > - Outra deficiência é o **lazy loading**. O recurso, até a versão 2.0, não estava disponível. Para carregar propriedades virtuais é necessário usar **Include** e **ThenInclude** para carregamento adiantado (eagler) ou usar **context.Entry(blog).Collection(b => b.Posts).Load()** para carregamento explícito. A partir da versão 2.1 até existe a opção de carregamento tardio, mas ainda não é a melhor das soluções. Estão estudando formas de melhorar. 
