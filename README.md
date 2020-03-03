@@ -302,6 +302,7 @@ Evolução
  
 **Fontes** 
 
+- https://docs.microsoft.com/pt-br/ef/core/what-is-new/
 - https://github.com/aspnet/EntityFramework6
 - https://github.com/aspnet/EntityFramework6/wiki
 - https://github.com/aspnet/EntityFramework6/wiki/Roadmap 
